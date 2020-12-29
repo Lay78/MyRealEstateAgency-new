@@ -71,6 +71,7 @@
     <string name="financial_contribution">Financial contribution:</string>
     <string name="loan_rate">Loan rate:</string>
     <string name="loan_duration">Loan duration (in months):</string>
+    <string name="simulate">Simulate</string>
     <string name="monthly_payment">Monthly payment:</string>
     <string name="total_payments">Total payments:</string>
 
