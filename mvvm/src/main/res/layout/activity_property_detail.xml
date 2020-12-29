@@ -92,6 +92,12 @@
                         android:textSize="14sp"
                         android:text="" />
 
+                    <Button
+                        android:id="@+id/btnConvertPrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="$" />
+
                 </TableRow>
 
                 <TableRow
