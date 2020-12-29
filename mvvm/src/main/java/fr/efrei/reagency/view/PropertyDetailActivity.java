@@ -64,6 +64,8 @@ final public class PropertyDetailActivity
     private TextView propAgentName;
     //private Button propSave;
 
+    private Button btnConvertPrice;
+
     private PropertyDetailActivityViewModel viewModel;
 
     @Override
@@ -106,7 +108,19 @@ final public class PropertyDetailActivity
         propAgentName = findViewById(R.id.propAgentName);
         viewModel = new ViewModelProvider(this, new SavedStateViewModelFactory(getApplication(), this, getIntent().getExtras())).get(PropertyDetailActivityViewModel.class);
 
+        btnConvertPrice = findViewById(R.id.btnConvertPrice);
+        btnConvertPrice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
         observeProperty();
+    }
+
+    public void convertToDollar(String string){
+
     }
 
     // Add to avoid TransactionTooLargeException
