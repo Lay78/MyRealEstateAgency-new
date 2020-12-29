@@ -128,9 +128,9 @@ final public class PropertyDetailActivity
                         Log.d("response", String.valueOf(res));
 
                         JsonObject rates = res.getAsJsonObject("rates");
-                        double priceInEuros = Double.valueOf(propPrice.getText().toString());
-                        double multiplier = Double.valueOf(rates.get("USD").toString());
-                        double priceInDollars = priceInEuros * multiplier;
+                        int priceInEuros = Integer.valueOf(propPrice.getText().toString());
+                        int multiplier = Integer.valueOf(rates.get("USD").toString());
+                        int priceInDollars = priceInEuros * multiplier;
                         propPrice.setText(String.valueOf(priceInDollars));
                     }
 
@@ -143,10 +143,6 @@ final public class PropertyDetailActivity
         });
 
         observeProperty();
-    }
-
-    public void convertToDollar(String string){
-
     }
 
     // Add to avoid TransactionTooLargeException
