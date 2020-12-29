@@ -25,6 +25,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.SavedStateViewModelFactory;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.google.gson.JsonObject;
 import com.livefront.bridge.Bridge;
 import com.livefront.bridge.SavedStateHandler;
 
@@ -32,7 +33,13 @@ import java.util.Calendar;
 
 import fr.efrei.reagency.R;
 import fr.efrei.reagency.bo.Property;
+import fr.efrei.reagency.retrofit.RetrofitBuilder;
+import fr.efrei.reagency.retrofit.RetrofitInterface;
 import fr.efrei.reagency.viewmodel.PropertyDetailActivityViewModel;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 import static fr.efrei.reagency.tools.Utils.imageViewToByte;
 
@@ -112,7 +119,26 @@ final public class PropertyDetailActivity
         btnConvertPrice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                RetrofitInterface retrofitInterface = RetrofitBuilder.getRetrofitInstance().create(RetrofitInterface.class);
+                Call<JsonObject> call = retrofitInterface.getExchangeCurrency("EUR");
+                call.enqueue(new Callback<JsonObject>() {
+                    @Override
+                    public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                        JsonObject res = response.body();
+                        Log.d("response", String.valueOf(res));
 
+                        JsonObject rates = res.getAsJsonObject("rates");
+                        double priceInEuros = Double.valueOf(propPrice.getText().toString());
+                        double multiplier = Double.valueOf(rates.get("USD").toString());
+                        double priceInDollars = priceInEuros * multiplier;
+                        propPrice.setText(String.valueOf(priceInDollars));
+                    }
+
+                    @Override
+                    public void onFailure(Call<JsonObject> call, Throwable t) {
+
+                    }
+                });
             }
         });
 
