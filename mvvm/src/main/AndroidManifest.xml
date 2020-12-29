@@ -10,12 +10,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.SimulatorActivity"></activity>
         <activity android:name=".view.UsersActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+
             </intent-filter>
         </activity>
         <activity
@@ -54,6 +53,17 @@
             android:name=".view.PropertySearchActivity"
             android:label="@string/property_search"
             android:parentActivityName=".view.PropertiesActivity" />
+
+        <activity android:name=".view.SimulatorActivity"
+            android:label="@string/loan_simulator"
+            android:parentActivityName=".view.PropertyDetailActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
 

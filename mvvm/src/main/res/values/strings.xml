@@ -67,6 +67,7 @@
     <string name="info_title">Information</string>
 
     // Simulator strings
+    <string name="loan_simulator">Loan simulator</string>
     <string name="property_price">Property price:</string>
     <string name="financial_contribution">Financial contribution:</string>
     <string name="loan_rate">Loan rate:</string>
