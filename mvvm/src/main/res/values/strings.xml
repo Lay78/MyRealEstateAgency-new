@@ -77,13 +77,14 @@
     <string name="total_payments">Total payments:</string>
     <string name="credit_cost">Credit cost:</string>
 
+    <string name="title_activity_maps">Map</string>
+
     <string-array name="spinner_type">
         <item>House</item>
         <item>Flat</item>
         <item>Office</item>
         <item>Student Room</item>
     </string-array>
-
     <string-array name="spinner_status">
         <item>Not Sold</item>
         <item>Sold</item>

@@ -35,6 +35,7 @@ dependencies {
     implementation 'org.jetbrains:annotations-java5:15.0'
     implementation project(path: ':bridge')
     implementation 'com.github.livefront:bridge:v1.3.0'
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
     annotationProcessor 'androidx.room:room-compiler:2.2.6'
     testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
