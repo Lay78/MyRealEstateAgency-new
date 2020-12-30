@@ -24,10 +24,6 @@
              sign the APK for publishing.
              You can define the keys for the debug and release targets in src/debug/ and src/release/.
         -->
-        <activity
-            android:name=".view.MapsActivity"
-            android:label="@string/title_activity_maps"></activity>
-
         <activity android:name=".view.UsersActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -70,22 +66,28 @@
             android:label="@string/property_search"
             android:parentActivityName=".view.PropertiesActivity" />
         <activity
+            android:name=".view.MapsActivity"
+            android:label="@string/title_activity_maps"
+            android:parentActivityName=".view.PropertiesActivity" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
+        <activity
             android:name=".view.SimulatorActivity"
             android:label="@string/loan_simulator"
-            android:parentActivityName=".view.PropertyDetailActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:parentActivityName=".view.PropertyDetailActivity"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
 
 </manifest>
