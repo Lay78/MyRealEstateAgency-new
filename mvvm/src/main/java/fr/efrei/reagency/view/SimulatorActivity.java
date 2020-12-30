@@ -24,6 +24,7 @@ public class SimulatorActivity extends AppCompatActivity {
 
     private TextView monthlyPayment;
     private TextView totalPayments;
+    private TextView creditCost;
 
     private SimulatorActivityViewModel viewModel;
 
@@ -41,6 +42,7 @@ public class SimulatorActivity extends AppCompatActivity {
 
         monthlyPayment = findViewById(R.id.monthlyPayment);
         totalPayments = findViewById(R.id.totalPayments);
+        creditCost = findViewById(R.id.creditCost);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,22 +60,26 @@ public class SimulatorActivity extends AppCompatActivity {
         et3 = loanRate.getText().toString();
         et4 = loanDuration.getText().toString();
 
+        //check if all fields are filled
         if (et1.matches("") || et2.matches("") || et3.matches("") || et4.matches("")) {
             Toast.makeText(this, "You must complete all fields !", Toast.LENGTH_SHORT).show();
             return;
         }
         else {
-            double loanAmount = Integer.parseInt(propertyPrice.getText().toString()) + Integer.parseInt(financialContribution.getText().toString());
-            double interestRate = Double.parseDouble(loanRate.getText().toString());
-            double loanPeriod = Integer.parseInt(loanDuration.getText().toString());
-            double r = interestRate / 1200;
-            double r1 = Math.pow(r + 1, loanPeriod);
+            double _propertyPrice = Integer.parseInt(propertyPrice.getText().toString());
+            double _financialContribution = Integer.parseInt(financialContribution.getText().toString());
 
-            double monthlyPaymentResult = (r + (r1 - 1)) * loanAmount;
-            double totalPaymentResult = monthlyPaymentResult * loanPeriod;
+            double amountToRepay = _propertyPrice - _financialContribution;
+            double _loanRate = Double.parseDouble(loanRate.getText().toString());
+            double _loanDuration = Integer.parseInt(loanDuration.getText().toString());
 
-            monthlyPayment.setText(new DecimalFormat("##.##").format(monthlyPaymentResult));
-            totalPayments.setText(new DecimalFormat("##.##").format(totalPaymentResult));
+            double monthlyPaymentResult = (amountToRepay * _loanRate / 1200) / (1 - Math.pow(1 + _loanRate / 1200, -1 * _loanDuration));
+            double totalPaymentResult = monthlyPaymentResult * _loanDuration;
+            double creditCostResult = totalPaymentResult - amountToRepay;
+
+            monthlyPayment.setText(new DecimalFormat("##.00").format(monthlyPaymentResult));
+            totalPayments.setText(new DecimalFormat("##.00").format(totalPaymentResult));
+            creditCost.setText(new DecimalFormat("##.00").format(creditCostResult));
         }
     }
 }

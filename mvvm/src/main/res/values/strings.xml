@@ -75,6 +75,7 @@
     <string name="simulate">Simulate</string>
     <string name="monthly_payment">Monthly payment:</string>
     <string name="total_payments">Total payments:</string>
+    <string name="credit_cost">Credit cost:</string>
 
     <string-array name="spinner_type">
         <item>House</item>
