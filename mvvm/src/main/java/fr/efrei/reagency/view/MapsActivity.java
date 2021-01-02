@@ -1,8 +1,11 @@
 package fr.efrei.reagency.view;
 
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 import fr.efrei.reagency.R;
 
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -40,8 +43,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        //LatLng sydney = new LatLng(-34, 151);
+        //mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+        //mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+
+        // Add exemples of locations
+        LatLng efrei = new LatLng(48.78879559928572, 2.363705095900726);
+        mMap.addMarker(new MarkerOptions().position(efrei).title("Marker in EFREI"));
+        //mMap.moveCamera(CameraUpdateFactory.newLatLng(efrei));
     }
 }
